@@ -1,17 +1,18 @@
 `define at(row, col) (8 * (col + 5*row))
 
 module matrix_mul(
-    input         clock,
-    input         reset,       
-    input  [199:0] matrix_a,
-    input  [199:0] matrix_b,
-    output reg [199:0] matrix_r
+    input start,
+    input clock,  
+    input [199:0] matrix_a,
+    input [199:0] matrix_b,
+    output reg [199:0] matrix_r,
+    output done
 );
 
     reg [2:0] row;
 
     always @(posedge clock) begin
-        if (reset) begin
+        if (start) begin
             row <= 0;
         end else begin
             matrix_r[`at(row, 0) +: 8] <= 

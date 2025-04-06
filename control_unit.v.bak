@@ -1,0 +1,29 @@
+module control_unit(
+    input clock,
+    input [31:0] instruction,
+    input [7:0] 
+    input done_alu,
+    output start_alu,
+    output [3:0] op_code,
+    output [5:0] reg_a,
+    output [5:0] reg_b,
+    output reg_write_enabled,
+    output reg_read_enabled,
+    output mem_write_enabled,
+    output mem_read_enabled,
+);
+
+reg [2:0] state;
+
+assign op_code = instruction[31+:5]
+
+always @(posedge clock) begin
+    case (state)
+    3'd0: // FETCH
+    3'd1: // DECODE
+    3'd2: // EXECUTE 
+    3'd3: // MEMORY
+    endcase
+end
+
+endmodule

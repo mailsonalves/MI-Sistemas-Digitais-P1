@@ -8,7 +8,7 @@ module matrix_add(
 genvar i;
 generate
   for (i = 0; i < 25; i = i + 1) begin : addition
-      assign matrix_r[i*8 +: 8] = $signed(matrix_a[i*8 +: 8]) + $signed(matrix_b[i*8 +: 8]);
+    assign matrix_r[i*8 +: 8] = $signed(matrix_a[i*8 +: 8]) + $signed(matrix_b[i*8 +: 8]);
   end
 endgenerate
 

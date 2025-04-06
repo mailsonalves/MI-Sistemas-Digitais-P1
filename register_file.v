@@ -1,0 +1,23 @@
+module register_file(
+    input clock,
+    input [7:0] reg_a,
+    input [7:0] reg_b,
+    input [199:0] reg_data_in,
+    input reg_write_enabled,
+    input reg_read_enabled,
+    output [199:0] reg_matrix_a,
+    output [199:0] reg_matrix_b
+);
+
+reg [199:0] registers [1:0];
+
+assign reg_matrix_a = reg_read_enabled ? registers[reg_a[7:6]] : 0;
+assign reg_matrix_b = reg_read_enabled ? registers[reg_b[7:6]] : 0;
+
+always @(posedge clock) begin
+    if (reg_write_enabled) begin
+        registers[reg_a[7:6]] <= reg_data_in;
+    end
+end
+
+endmodule
